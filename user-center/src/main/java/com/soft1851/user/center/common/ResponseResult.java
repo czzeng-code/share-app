@@ -1,4 +1,4 @@
-package com.soft1851.course.center.common;
+package com.soft1851.user.center.common;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
