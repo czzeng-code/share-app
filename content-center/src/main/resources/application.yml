@@ -1,11 +1,12 @@
 spring:
   application:
     name: content-center
+  main:
+    allow-bean-definition-overriding: true
   cloud:
     nacos:
       discovery:
-        server-addr: czzeng.com:8848
-        namespace: ebdcf006-7ac0-4c4f-b8f5-743908b0b28f
+        server-addr: 101.200.50.236:8848
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -38,12 +39,17 @@ mybatis:
   configuration:
     map-underscore-to-camel-case: true
 
+logging:
+  level:
+    # feign的日志系统是建立在SpringBoot基础上的，此处一定要是debug, 否则都不会打印
+    com.soft1851.content.center.feignclient.UserCenterFeignClient: debug
+
 feign:
-  client:
-    config:
-      # 全局配置
-      default:
-        loggerLevel: full
+#  client:
+#    config:
+#      # 全局配置
+#      default:
+#        loggerLevel: full
   httpclient:
     # feign使用apache httpclient做请求; 而不是默认的url connection
     enabled: true

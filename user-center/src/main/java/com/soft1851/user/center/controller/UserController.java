@@ -37,4 +37,9 @@ public class UserController {
         return userService.findById(id);
     }
 
+    @GetMapping("/q")
+    public User query(User user) {
+        return user;
+    }
+
 }

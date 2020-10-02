@@ -4,18 +4,17 @@ spring:
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/user_center?serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://101.200.50.236:3306/user_center?serverTimezone=Asia/Shanghai
     username: root
-    password: root
+    password: czroot
 
   cloud:
     nacos:
       discovery:
-        server-addr: czzeng.com:8848
+        server-addr: 101.200.50.236:8848
         metadata:
           instance: zz
           version: 0.1
-        namespace: ebdcf006-7ac0-4c4f-b8f5-743908b0b28f
 
 management                                                                    :
   endpoints:
@@ -26,4 +25,4 @@ management                                                                    :
     health:
       show-details: always
 server:
-  port: 8013
+  port: 8014

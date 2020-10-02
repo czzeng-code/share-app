@@ -20,7 +20,7 @@ import java.util.List;
  * @Description
  * @Version 1.0
  */
-@RestController
+//@RestController
 @RequestMapping("/test")
 @Slf4j
 public class TestController {
