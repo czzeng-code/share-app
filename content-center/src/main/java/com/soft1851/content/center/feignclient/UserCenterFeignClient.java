@@ -1,10 +1,13 @@
 package com.soft1851.content.center.feignclient;
 
 import com.soft1851.content.center.configuration.UserCenterFeignConfiguration;
-import com.soft1851.content.center.dto.UserDto;
+import com.soft1851.content.center.domain.dto.UserAddBonusMsgDto;
+import com.soft1851.content.center.domain.dto.UserDto;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 /**
  * @Author zeng
@@ -23,5 +26,7 @@ public interface UserCenterFeignClient {
     @GetMapping("/users/{id}")
     UserDto findById(@PathVariable Integer id);
 
+    @PutMapping("/users/bonus")
+    void addBonus(@RequestBody UserAddBonusMsgDto userAddBonusMsgDto);
 
 }

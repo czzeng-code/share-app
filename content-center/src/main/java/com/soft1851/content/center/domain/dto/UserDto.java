@@ -1,10 +1,9 @@
-package com.soft1851.user.center.dto;
+package com.soft1851.content.center.domain.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import org.springframework.context.annotation.Bean;
-
-import javax.persistence.Id;
+import lombok.NoArgsConstructor;
 
 /**
  * @Author zeng
@@ -14,9 +13,10 @@ import javax.persistence.Id;
  */
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class UserDto {
 
-    @Id
     private Integer id;
 
     /**

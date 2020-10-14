@@ -1,28 +1,23 @@
-package com.soft1851.content.center.dto;
+package com.soft1851.user.center.domain.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Id;
-
 /**
  * @Author zeng
- * @Date 2020/9/29 16:32
+ * @Date 2020/10/12 12:29
  * @Description
  * @Version 1.0
  */
 @Data
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserDto {
-
-    private Integer id;
-
-    /**
-     * 微信昵称
-     */
+@Builder
+public class LoginDto {
+    private String openId;
+    private String loginCode;
     private String wxNickname;
+    private String avatarUrl;
 }

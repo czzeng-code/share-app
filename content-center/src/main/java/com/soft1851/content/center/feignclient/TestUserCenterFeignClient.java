@@ -1,6 +1,6 @@
 package com.soft1851.content.center.feignclient;
 
-import com.soft1851.content.center.dto.UserDto;
+import com.soft1851.content.center.domain.dto.UserDto;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.cloud.openfeign.SpringQueryMap;
 import org.springframework.web.bind.annotation.GetMapping;

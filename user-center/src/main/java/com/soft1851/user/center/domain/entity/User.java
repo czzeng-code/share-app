@@ -1,6 +1,9 @@
-package com.soft1851.content.center.entity;
+package com.soft1851.user.center.domain.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Id;
 import java.io.Serializable;
@@ -13,6 +16,9 @@ import java.util.Date;
  * @since 2020-09-29 16:27:00
  */
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class User implements Serializable {
     private static final long serialVersionUID = -95057739721797378L;
     /**

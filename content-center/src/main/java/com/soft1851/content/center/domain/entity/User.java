@@ -1,4 +1,4 @@
-package com.soft1851.user.center.entity;
+package com.soft1851.content.center.domain.entity;
 
 import lombok.Data;
 

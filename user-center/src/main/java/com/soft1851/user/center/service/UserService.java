@@ -1,9 +1,9 @@
 package com.soft1851.user.center.service;
 
-import com.soft1851.user.center.dto.UserDto;
-import com.soft1851.user.center.entity.User;
-
-import java.util.List;
+import com.soft1851.user.center.domain.dto.LoginDto;
+import com.soft1851.user.center.domain.dto.UserAddBonusMsgDto;
+import com.soft1851.user.center.domain.dto.UserDto;
+import com.soft1851.user.center.domain.entity.User;
 
 /**
  * 分享(User)表服务接口
@@ -14,5 +14,18 @@ import java.util.List;
 public interface UserService {
 
     UserDto findById(Integer userId);
+
+    /**
+     * 加积分
+     * @param userAddBonusMsgDto
+     */
+    void addBonus(UserAddBonusMsgDto userAddBonusMsgDto);
+
+    /**
+     * 登录
+     * @param loginDto
+     * @return
+     */
+    User login(LoginDto loginDto, String openId);
 
 }

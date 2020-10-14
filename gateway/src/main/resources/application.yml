@@ -1,0 +1,44 @@
+server:
+  port: 8040
+spring:
+  application:
+    name: gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 101.200.50.236:8848
+    gateway:
+      discovery:
+        locator:
+          # 让gateway通过服务发现组件找到其他的微服务
+          enabled: true
+      routes:
+        - id: path_route1
+          uri: lb://user-center
+          predicates:
+            - Path=/users/**
+#            - TimeBetween=上午8:00,上午10:00
+#            - After=2020-10-09T09:00:00+08:00[Asia/Shanghai]
+#            - Cookie=username,macro
+#            - Method=GET
+        - id: path_route2
+          uri: lb://content-center
+          predicates:
+            - Path=/shares/**
+        - id: path_route3
+          uri: lb://content-center
+          predicates:
+            - Path=/notices/**
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+
+logging:
+  level:
+    org.springframework.cloud.gateway: trace

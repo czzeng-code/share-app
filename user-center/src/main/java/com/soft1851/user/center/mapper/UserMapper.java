@@ -1,10 +1,7 @@
 package com.soft1851.user.center.mapper;
 
-import com.soft1851.user.center.entity.User;
-import org.apache.ibatis.annotations.Param;
+import com.soft1851.user.center.domain.entity.User;
 import tk.mybatis.mapper.common.Mapper;
-
-import java.util.List;
 
 /**
  * 分享(User)表数据库访问层

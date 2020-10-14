@@ -1,18 +1,25 @@
 spring:
   application:
     name: content-center
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+
   main:
     allow-bean-definition-overriding: true
   cloud:
     nacos:
       discovery:
         server-addr: 101.200.50.236:8848
+    sentinel:
+      transport:
+        dashboard: 101.200.50.236:8080
+
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/content_center?serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://101.200.50.236:3306/content_center?serverTimezone=Asia/Shanghai
     username: root
-    password: root
+    password: czroot
 
 management:
   endpoints:
@@ -24,16 +31,16 @@ management:
     health:
       show-details: always
 server:
-  port: 8003
+  port: 8050
 
-#user-center:
-#  ribbon:
-#    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+user-center:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
 
-ribbon:
-  eager-load:
-    clients: user-center
-    enabled: true
+#ribbon:
+#  eager-load:
+#    clients: user-center
+#    enabled: true
 
 mybatis:
   configuration:
@@ -45,11 +52,15 @@ logging:
     com.soft1851.content.center.feignclient.UserCenterFeignClient: debug
 
 feign:
-#  client:
-#    config:
-#      # 全局配置
-#      default:
-#        loggerLevel: full
+  sentinel:
+    enabled: true
+  client:
+    config:
+      # 全局配置
+      default:
+        loggerLevel: full
+        requestInterceptors:
+          - com.soft1851.content.center.feignclient.TokenInterceptor
   httpclient:
     # feign使用apache httpclient做请求; 而不是默认的url connection
     enabled: true
@@ -57,3 +68,9 @@ feign:
     max-connections: 200
     # feign单个路径的最大连接数
     max-connections-per-route: 50
+
+rocketmq:
+  name-server: 101.200.50.236:9876
+  producer:
+    # 必须指定group
+    group: test-group
